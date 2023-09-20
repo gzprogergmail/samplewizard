@@ -1,8 +1,8 @@
 import { Pivot, PivotItem, PrimaryButton } from '@fluentui/react';
 import React, { useState } from 'react';
-import { Greeting } from './Greeting';
-import { Singing } from './Singing';
-import { Draw } from './Draw';
+import { Greeting } from './Steps/Greeting';
+import { Singing } from './Steps/Singing';
+import { Draw } from './Steps/Draw';
 
 export const MyWizard = () => {
     const [currentStep, setCurrentStep] = useState(0);
