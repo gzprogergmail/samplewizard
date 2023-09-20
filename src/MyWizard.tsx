@@ -1,13 +1,16 @@
 import { Pivot, PivotItem, PrimaryButton } from '@fluentui/react';
 import React, { useState } from 'react';
-import { SimpleComp1 } from './SimpeComp1';
+import { Greeting } from './Greeting';
+import { Singing } from './Singing';
+import { Draw } from './Draw';
 
 export const MyWizard = () => {
     const [currentStep, setCurrentStep] = useState(0);
+    const [stepName, setStepName] = useState("N/A");
 
     const handleStepChange = (item?: PivotItem) => {
         if (item) {
-            setCurrentStep(parseInt(item.props.itemKey||"0"));
+            setCurrentStep(parseInt(item.props.itemKey || "0"));
         }
     };
 
@@ -21,15 +24,17 @@ export const MyWizard = () => {
 
     return (
         <>
+            <h1>My Wizard</h1>
+            <h2>primary state: {stepName} </h2>
             <Pivot onLinkClick={handleStepChange} selectedKey={currentStep.toString()}>
                 <PivotItem headerText="Step 1" itemKey="0">
-                  hellow world
+                <Draw yourShape="circle" setResult={setStepName} />
                 </PivotItem>
                 <PivotItem headerText="Step 2" itemKey="1">
-                    step 2
+                <Singing yourSong="Little star" setResult={setStepName} />
                 </PivotItem>
                 <PivotItem headerText="Step 3" itemKey="2">
-                    <SimpleComp1 />
+                    <Greeting yourName="ET" setResult={setStepName} />
                 </PivotItem>
                 {/* Add more PivotItems as needed... */}
             </Pivot>
