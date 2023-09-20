@@ -6,7 +6,18 @@ import { Draw } from './Draw';
 
 export const MyWizard = () => {
     const [currentStep, setCurrentStep] = useState(0);
-    const [stepName, setStepName] = useState("N/A");
+    const [primaryStateSetByInteraction, setprimaryStateSetByInteraction] = useState("N/A");
+    const steps = [
+        { headerText: "Sing", component: <Singing yourSong="Little star" setResult={setprimaryStateSetByInteraction} /> },
+        { headerText: "Draw", component:  <Draw yourShape={"circle"} setResult={setprimaryStateSetByInteraction} />},        
+        { headerText: "Greet", component: <Greeting yourName="ET" setResult={setprimaryStateSetByInteraction} /> }
+    ]
+
+    const pivotItems = steps.map((step, index) => (
+        <PivotItem key={index} headerText={step.headerText} itemKey={index.toString()}>
+            {step.component}
+        </PivotItem>
+    ));
 
     const handleStepChange = (item?: PivotItem) => {
         if (item) {
@@ -25,18 +36,9 @@ export const MyWizard = () => {
     return (
         <>
             <h1>My Wizard</h1>
-            <h2>primary state: {stepName} </h2>
+            <h2>primary state: {primaryStateSetByInteraction} </h2>
             <Pivot onLinkClick={handleStepChange} selectedKey={currentStep.toString()}>
-                <PivotItem headerText="Step 1" itemKey="0">
-                <Draw yourShape="circle" setResult={setStepName} />
-                </PivotItem>
-                <PivotItem headerText="Step 2" itemKey="1">
-                <Singing yourSong="Little star" setResult={setStepName} />
-                </PivotItem>
-                <PivotItem headerText="Step 3" itemKey="2">
-                    <Greeting yourName="ET" setResult={setStepName} />
-                </PivotItem>
-                {/* Add more PivotItems as needed... */}
+                {pivotItems}
             </Pivot>
             <div>
                 {currentStep > 0 && (

@@ -9,7 +9,7 @@ export const Greeting = (props: {
         Hello {props.yourName}
       </div>
       <div>
-        <button name="click" onClick={() => props.setResult("greeting")}>click me</button>
+      <button name="click me to changed primary state" onClick={() => props.setResult("greeting")}>click me</button>
       </div>
     </div>
   );

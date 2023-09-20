@@ -9,7 +9,7 @@ export const Draw = (props: {
       🖌🖌🖌 {props.yourShape}
       </div>
       <div>
-        <button name="click to set value" onClick={() => props.setResult("draw")}>click me</button>
+        <button name="click me to changed primary state" onClick={() => props.setResult("draw")}>click me</button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export const Singing = (props: {
       &#9835; &#9835; &#9835; {props.yourSong}
       </div>
       <div>
-      <button name="click" onClick={() => props.setResult("Sing")}>click me</button>
+      <button name="click me to changed primary state" onClick={() => props.setResult("Sing")}>click me</button>
       </div>
     </div>
   );
